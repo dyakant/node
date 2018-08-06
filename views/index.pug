@@ -1,0 +1,28 @@
+html
+  title Main page
+  link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", crossorigin="anonymous")
+body
+  div.container
+    .row
+      h1= message
+    .row
+      form(action="")
+        .form-group
+          label(for="id_name") ID:
+          input#id_name(type="text")
+        .form-group
+          label(for="name") Name:
+          input#name(type="text")
+        .form-group
+          label(for="price") Price:
+          input#price(type="text")
+        button.btn.btn-sucsess(type="buttom") Save
+    .row
+      h2 "Items"
+    ul.list-group
+      each i in items
+        li.list-group-item
+          | {id= #{i.id},
+          | name= #{i.name},
+          | price= #{i.price}}
+    

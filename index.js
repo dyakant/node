@@ -1,24 +1,23 @@
 const express = require("express");
 const router = require("./api");
 const bodyParser = require("body-parser");
+const items = require('./items');
 
 const app = express();
 
-app.use(bodyParser.json())
-app.use("/api", router)
+app.set('views', './views');
+app.set('view engine', 'pug');
 
-app.use((req,res, next) => {
-  console.log("use method");
-  next()
+app.use(bodyParser.urlencoded());
+app.use("/api", router);
+
+app.get("/login", (req,res) => {
+  res.render('login');
 })
-app.all("/", (req, res) => {
-  console.log(`all method ${app}`);
-  res.send("all method");
-})
+
 
 app.get("/", (req, res) => {
-  console.log("get method");
-  res.send("get method");
+  res.render('index', {title: "Hi", message: "Hello", items});
 })
 
 app.post("/", (req, res) => {

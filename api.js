@@ -4,6 +4,14 @@ const items = require("./items");
 
 const router = express.Router();
 
+router.post("/login", (req,res) => {
+  console.log(req.body);
+  res.send('OK');
+
+})
+
+
+
 router.get("/items", (req,res) => {
     res.json(items);
 });
